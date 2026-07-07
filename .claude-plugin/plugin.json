@@ -1,0 +1,34 @@
+{
+  "name": "ilearn",
+  "description": "Technical interview preparation for Claude Code — roadmap generation, concept reviews, mock interviews, progress tracking",
+  "version": "1.0.0",
+  "author": {
+    "name": "vthnhtng",
+    "url": "https://github.com/vthnhtng"
+  },
+  "homepage": "https://github.com/vthnhtng/ilearn",
+  "repository": "https://github.com/vthnhtng/ilearn",
+  "license": "MIT",
+  "keywords": [
+    "interview",
+    "interview-prep",
+    "study",
+    "roadmap",
+    "skills",
+    "obsidian"
+  ],
+  "commands": [
+    "./.claude/skills/ilearn-init.md",
+    "./.claude/skills/ilearn-review.md",
+    "./.claude/skills/ilearn-interview.md",
+    "./.claude/skills/ilearn-theory.md",
+    "./.claude/skills/ilearn-status.md",
+    "./.claude/skills/ilearn-obsidian-export.md"
+  ],
+  "agents": [
+    "./.claude/plugins/ilearn/agents/interviewer.md",
+    "./.claude/plugins/ilearn/agents/reviewer.md",
+    "./.claude/plugins/ilearn/agents/roadmap-researcher.md",
+    "./.claude/plugins/ilearn/agents/teacher.md"
+  ]
+}

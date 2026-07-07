@@ -1,0 +1,18 @@
+{
+  "name": "ilearn",
+  "version": "1.0.0",
+  "description": "Technical interview preparation workspace for Claude Code — roadmap, reviews, mock interviews, progress tracking.",
+  "files": [
+    ".claude/skills/ilearn-init.md",
+    ".claude/skills/ilearn-review.md",
+    ".claude/skills/ilearn-interview.md",
+    ".claude/skills/ilearn-theory.md",
+    ".claude/skills/ilearn-status.md",
+    ".claude/plugins/ilearn/agents/interviewer.md",
+    ".claude/plugins/ilearn/agents/reviewer.md",
+    ".claude/plugins/ilearn/agents/roadmap-researcher.md",
+    ".claude/plugins/ilearn/agents/teacher.md",
+    ".claude/plugins/ilearn/references/workspace-format.md",
+    ".claude/skills/ilearn-obsidian-export.md"
+  ]
+}
