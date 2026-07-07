@@ -12,22 +12,17 @@ ilearn ships as a **skills-directory plugin**: skills in `.claude/skills/` auto-
 
 ```bash
 # Skills are already available. Just start a workspace:
-/ilearn-init "Java Spring Boot Backend Developer"
+/ilearn:init "Java Spring Boot Backend Developer"
 ```
 
 ### Option B: Install from local marketplace (use in other projects)
 
-From the ilearn directory, register the local marketplace, then install:
-
 ```bash
-# Register this directory as a plugin marketplace
 /plugin marketplace add ./
-
-# Install the ilearn plugin
 /plugin install ilearn@ilearn-dev
 
-# Now use any project:
-/ilearn-init "Your Topic"
+# Then in any project:
+/ilearn:init "Your Topic"
 ```
 
 ### Option C: Install from GitHub
@@ -41,12 +36,16 @@ From the ilearn directory, register the local marketplace, then install:
 
 | Command | Description |
 |---------|-------------|
-| `/ilearn-init` | Scaffold a new workspace (auto or manual roadmap) |
-| `/ilearn-review` | Review & score a concept (Understanding/Depth/Communication) |
-| `/ilearn-interview` | Live mock interview session |
-| `/ilearn-theory` | Interactive concept teaching |
-| `/ilearn-status` | Progress overview with weak-area analysis |
-| `/ilearn-obsidian-export` | Turn workspace into an Obsidian vault (config, dashboard, templates) |
+| `/ilearn:init` | Scaffold a new workspace (auto or manual roadmap) |
+| `/ilearn:review` | Review & score a concept (Understanding/Depth/Communication) |
+| `/ilearn:interview` | Live mock interview session |
+| `/ilearn:theory` | Interactive concept teaching |
+| `/ilearn:status` | Progress overview with weak-area analysis |
+| `/ilearn:obsidian-export` | Turn workspace into an Obsidian vault (config, dashboard, templates) |
+
+### Bare aliases (when session starts in ilearn repo)
+
+`/ilearn-init`, `/ilearn-review`, `/ilearn-interview`, `/ilearn-theory`, `/ilearn-status`, `/ilearn-obsidian-export` also work when `.claude/skills/` auto-loads.
 
 ## Workspace Structure
 
@@ -85,6 +84,8 @@ Score ≥ 7 = pass. Score < 7 = concept marked for retry.
 | `.claude-plugin/plugin.json` | Plugin metadata (name, author, version) |
 | `.claude-plugin/marketplace.json` | Marketplace catalog for `/plugin marketplace add` |
 | `.claude/skills/*.md` | Skills — auto-loaded at session start |
+| `commands/` | Same skills for plugin discovery via `source: "./"` |
+| `agents/` | Sub-agent definitions for plugin discovery |
 
 ## Design
 

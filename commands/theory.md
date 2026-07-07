@@ -1,5 +1,5 @@
 ---
-name: ilearn-theory
+name: theory
 description: "Deep-dive interactive lesson on a concept. Reads existing theory.md, delivers an interactive teaching session via teacher sub-agent, appends new insights to theory.md."
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: ilearn-review
+name: review
 description: "Review a concept by answering questions and getting scored. If no concept specified, lists available concepts for review. Supports iterative review with progress tracking."
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: ilearn-obsidian-export
+name: obsidian-export
 description: "Export an ilearn workspace as an Obsidian vault — adds .obsidian config, templates, dataview dashboards, and graph-view metadata for visual progress tracking."
 ---
 

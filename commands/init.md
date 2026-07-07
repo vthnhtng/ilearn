@@ -1,5 +1,5 @@
 ---
-name: ilearn-init
+name: init
 description: "Initialize a new ilearn workspace for interview preparation. Scaffolds folder structure, ROADMAP.md, and concept subfolders. Supports auto-generated roadmaps via deep research or manual user-provided roadmaps."
 ---
 

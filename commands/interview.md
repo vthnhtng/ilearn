@@ -1,5 +1,5 @@
 ---
-name: ilearn-interview
+name: interview
 description: "Run a mock interview session. Generates questions from reviewed concepts, scores answers, provides debrief with PASS/FAIL verdict and writes interview log."
 ---
 

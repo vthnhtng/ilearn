@@ -1,5 +1,5 @@
 ---
-name: ilearn-status
+name: status
 description: "Show progress overview — concepts reviewed, scores, weak areas, retry candidates, and suggested next steps."
 ---
 
