@@ -1,6 +1,6 @@
 ---
 name: init
-description: "Initialize a new ilearn workspace for interview preparation. Scaffolds folder structure, ROADMAP.md, and concept subfolders. Supports auto-generated roadmaps via deep research or manual user-provided roadmaps."
+description: "Initialize a new ilearn workspace for interview preparation. Scaffolds folder structure, ROADMAP.md, and concept subfolders. Supports auto-generated roadmaps via deep research, from-questions files, or manual user-provided roadmaps."
 ---
 
 # ilearn-init — Initialize Interview Training Workspace
@@ -21,9 +21,11 @@ User types `/ilearn:init` or `/ilearn:init "<topic>"` to create a new interview 
 3. Ask: "What is your target level?" — offer choices: Junior, Mid, Senior
 4. Ask: "How should we create the roadmap?" — options:
    - **Auto**: I research and generate a structured roadmap for you
+   - **From Questions File**: I read your interview questions file and build a roadmap from it
    - **Manual**: I create an empty ROADMAP.md and folder structure — you fill in the concepts
 
 5. IF auto → ask: "What is your target timeline?" — choices: 1 month, 3 months, 6 months, Any
+6. IF from questions file → delegate to the from-questions skill flow (Steps 1-6 of from-questions.md), then resume at Step 4 (scaffolding) with the classified YAML
 
 ### Step 2: Generate Roadmap (Auto Mode)
 
@@ -202,7 +204,7 @@ interviews/.gitkeep
   "target_level": "<target_level>",
   "ilearn_version": "1.0.0",
   "created_at": "<ISO timestamp>",
-  "roadmap_source": "auto|manual"
+  "roadmap_source": "auto|manual|from-questions"
 }
 ```
 
