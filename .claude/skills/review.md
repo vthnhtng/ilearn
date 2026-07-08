@@ -41,8 +41,34 @@ If no argument was provided:
 1. Read `theory.md` and `questions.md` from the concept folder.
 2. If `questions.md` has content (not empty, not just HTML comments) → use those questions as-is.
 3. If `questions.md` is empty:
-   - If `theory.md` has content → generate 3-5 questions based on the theory content.
-   - If `theory.md` is also empty → use web search for the concept topic and generate 3-5 questions based on search results.
+   - Ask: "questions.md is empty. Generate and save questions now? [y/N]"
+   - If yes:
+     a. Read `.claude/plugins/ilearn/references/workspace-format.md` to recall format rules.
+     b. Read `.ilearn/config.json` to get `current_level` and `target_level`.
+     c. Spawn a general-purpose agent (`subagent_type: "general-purpose"`, `run_in_background: false`). Pass as prompt:
+
+        ```
+        You are a question writer for technical interview preparation.
+
+        TOPIC: <Concept Name>
+        THEORY:
+        <content of theory.md>
+
+        Read .claude/plugins/ilearn/references/workspace-format.md first to understand the workspace structure and questions.md format.
+
+        Generate 5-10 interview-style review questions based solely on the theory content provided. Cover key concepts, edge cases, trade-offs, and practical applications appropriate for a <current_level> → <target_level> interview.
+
+        Return as a numbered markdown list:
+        1. What is ...?
+        2. Explain ...
+        3. How would you ...?
+        ```
+
+     d. Write the generated list to `concepts/<slug>/questions.md`.
+     e. Commit: `git add concepts/<slug>/questions.md && git commit -m "feat: questions — <Concept Name>"`
+   - If no:
+     - If `theory.md` has content → generate 3-5 questions based on the theory content (inline, no persist).
+     - If `theory.md` is also empty → use web search for the concept topic and generate 3-5 questions based on search results (inline, no persist).
 4. Present the question source to the user: "Using questions from: [questions.md / generated from theory / generated from web]"
 5. Ask: "Would you like questions one at a time, or all at once?"
 6. Present questions per user preference.
