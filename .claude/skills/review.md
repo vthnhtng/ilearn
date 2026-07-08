@@ -87,7 +87,14 @@ Produce a complete review.md file content.
 4. Set `reviewed_at` to current date (YYYY-MM-DD), replacing the date the reviewer returned.
 5. Write the full content to `concepts/<slug>/review.md`. If old feedback was extracted in step 5.1, append it under `## Previous Feedback` before writing, so the final structure is: `<YAML frontmatter>\n\n## Feedback\n<new feedback>\n\n## Previous Feedback\n<old feedback>`
 
-### Step 6: Update ROADMAP.md
+### Step 6: Save review report
+
+1. Create `concepts/<slug>/reviews/` directory if it doesn't exist.
+2. Write a copy of the review content (same content as written to review.md) to `concepts/<slug>/reviews/<dd-mm-yyyy>-<score>.md`.
+   - Format date as `DD-MM-YYYY` (e.g., `07-07-2026`).
+   - Score is the overall score as an integer or one decimal (e.g., `07-07-2026-7.5.md`).
+
+### Step 7: Update ROADMAP.md
 
 1. Find the concept line in ROADMAP.md matching `[[concepts/<slug>/]]`.
 2. Replace the line:
@@ -109,7 +116,7 @@ with:
    - If there are already reviewed concepts, recalculate average of all concept scores in ROADMAP.md.
    - Update `Last Updated:` to today's date.
 
-### Step 7: Report & Commit
+### Step 8: Report & Commit
 
 1. Print summary:
 
