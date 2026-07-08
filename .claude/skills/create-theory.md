@@ -53,7 +53,7 @@ If no argument was provided:
 1. Read `.claude/plugins/ilearn/references/workspace-format.md` to recall format rules.
 2. Read `.claude/plugins/ilearn/agents/researcher.md` for agent instructions.
 3. Read `concept name` from ROADMAP.md by parsing the concept entry line.
-4. Read `.ilearn/config.json` to get `current_level` and `target_level`.
+4. Read `.ilearn/config.json` to get `current_level` and `target_level`. If the file is not readable, use defaults "Junior" → "Mid".
 5. Spawn a **researcher** sub-agent via the Agent tool (`subagent_type: "general-purpose"`, `description: "researcher"`, `run_in_background: false`). Pass as prompt:
 
 ```
@@ -121,3 +121,4 @@ git commit -m "feat: theory — <Concept Name>"
 - **Researcher times out**: Skip concept (--all) or report failure (single).
 - **--all with nothing to fill**: "All concepts already have theory content."
 - **--all interrupted mid-batch**: Each concept is committed individually, so partial progress is saved.
+- **Config file missing**: Use defaults "Junior" → "Mid" if `.ilearn/config.json` is not readable.

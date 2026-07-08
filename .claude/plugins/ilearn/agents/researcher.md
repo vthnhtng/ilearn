@@ -24,9 +24,9 @@ TARGET_LEVEL: <Junior | Mid | Senior>
 
 ## Output Format
 
-Return ONLY theory.md content wrapped in ```markdown:
+Return ONLY raw theory.md markdown content (no wrapping code fences):
 
-```markdown
+```
 # <Concept Name>
 
 ## Overview
