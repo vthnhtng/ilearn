@@ -6,19 +6,19 @@ description: "Run a mock interview session. Generates questions from reviewed co
 # ilearn-interview — Mock Interview Session
 
 ## When to use
-User types `/ilearn-interview` to start a mock interview session.
+User types `/ilearn:interview` to start a mock interview session.
 
 ## Prerequisites
-- A workspace initialized with `/ilearn-init` — ROADMAP.md must exist in cwd.
+- A workspace initialized with `/ilearn:init` — ROADMAP.md must exist in cwd.
 - At least 1 concept must be reviewed (score >= 7).
-- If ROADMAP.md does not exist, print: "No ilearn workspace found in this directory. Run `/ilearn-init` first to create one." and stop.
+- If ROADMAP.md does not exist, print: "No ilearn workspace found in this directory. Run `/ilearn:init` first to create one." and stop.
 
 ## Flow
 
 ### Step 1: Detect workspace
 
 1. Check if `ROADMAP.md` exists in cwd. If not → warn and stop.
-2. Check that `.ilearn/config.json` exists. If missing, print: "Workspace config not found at `.ilearn/config.json`. The workspace may be corrupted. Run `/ilearn-init` to reinitialize." and stop.
+2. Check that `.ilearn/config.json` exists. If missing, print: "Workspace config not found at `.ilearn/config.json`. The workspace may be corrupted. Run `/ilearn:init` to reinitialize." and stop.
 
 ### Step 2: Check reviewed concepts
 
@@ -26,7 +26,7 @@ User types `/ilearn-interview` to start a mock interview session.
 2. If ROADMAP.md has no `[ ]` or `[x]` entries at all, print "No concepts found in ROADMAP.md." and stop.
 3. Filter for reviewed concepts: look for lines with `[x]` and parse `Score: <N>/10` from each line.
 4. Only include concepts where Score >= 7. Skip concepts with Score < 7 (in_progress).
-5. If zero reviewed (score >= 7) concepts found, print: "No reviewed concepts found. Review at least 1 concept first with `/ilearn-review`." and stop.
+5. If zero reviewed (score >= 7) concepts found, print: "No reviewed concepts found. Review at least 1 concept first with `/ilearn:review`." and stop.
 6. Show the user which concepts will be covered: "Interview will cover <N> reviewed concepts: <list of names>"
 
 ### Step 3: Determine interview parameters
@@ -104,7 +104,7 @@ After the interview, for each concept covered:
    ## Interview Note
    Score during interview on <YYYY-MM-DD>: <N>/10
    ```
-3. This is optional — the main review scores come from `/ilearn-review`.
+3. This is optional — the main review scores come from `/ilearn:review`.
 
 ### Step 8: Commit
 
@@ -115,9 +115,9 @@ git commit -m "feat: interview log — <topic> (<overall>/10, <result>)"
 
 ## Edge Cases
 
-- **No ROADMAP.md**: Warn and stop — run `/ilearn-init` first.
-- **No .ilearn/config.json**: Print "Workspace config not found at `.ilearn/config.json`. The workspace may be corrupted. Run `/ilearn-init` to reinitialize." and stop.
-- **Zero reviewed concepts**: If concepts exist but none have score >= 7, print "No reviewed concepts found. Review at least 1 concept first with `/ilearn-review`." and stop.
+- **No ROADMAP.md**: Warn and stop — run `/ilearn:init` first.
+- **No .ilearn/config.json**: Print "Workspace config not found at `.ilearn/config.json`. The workspace may be corrupted. Run `/ilearn:init` to reinitialize." and stop.
+- **Zero reviewed concepts**: If concepts exist but none have score >= 7, print "No reviewed concepts found. Review at least 1 concept first with `/ilearn:review`." and stop.
 - **No concept entries**: If ROADMAP.md has no `[ ]` or `[x]` entries, print "No concepts found in ROADMAP.md." and stop.
 - **Missing or empty theory.md**: If theory.md is missing or empty, pass empty theory — interviewer falls back to topic name.
 - **Interviewer doesn't finish**: If the sub-agent returns incomplete content or no log, show raw output and ask user to help.

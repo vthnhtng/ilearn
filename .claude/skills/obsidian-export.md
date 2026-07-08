@@ -6,11 +6,11 @@ description: "Export an ilearn workspace as an Obsidian vault — adds .obsidian
 # ilearn-obsidian-export — Export to Obsidian Vault
 
 ## When to use
-User types `/ilearn-obsidian-export` to turn their ilearn workspace into a full Obsidian vault with visual dashboards, templates, and plugin config.
+User types `/ilearn:obsidian-export` to turn their ilearn workspace into a full Obsidian vault with visual dashboards, templates, and plugin config.
 
 ## Prerequisites
-- A workspace initialized with `/ilearn-init` — ROADMAP.md must exist in cwd.
-- If ROADMAP.md does not exist, print: "No ilearn workspace found in this directory. Run `/ilearn-init` first to create one." and stop.
+- A workspace initialized with `/ilearn:init` — ROADMAP.md must exist in cwd.
+- If ROADMAP.md does not exist, print: "No ilearn workspace found in this directory. Run `/ilearn:init` first to create one." and stop.
 
 ## What this does
 

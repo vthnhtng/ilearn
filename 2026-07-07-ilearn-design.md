@@ -174,7 +174,7 @@ File: `interviews/<date>_<topic>_<overall-score>.md`
 
 ### 3.2 Skill: `ilearn-init`
 
-**Triggers:** `/ilearn-init` or `/ilearn-init "topic string"`
+**Triggers:** `/ilearn:init` or `/ilearn:init "topic string"`
 
 **Flow:**
 
@@ -197,7 +197,7 @@ File: `interviews/<date>_<topic>_<overall-score>.md`
 
 ### 3.3 Skill: `ilearn-review`
 
-**Triggers:** `/ilearn-review` or `/ilearn-review concepts/java-oop/`
+**Triggers:** `/ilearn:review` or `/ilearn:review concepts/java-oop/`
 
 **Flow:**
 
@@ -217,7 +217,7 @@ File: `interviews/<date>_<topic>_<overall-score>.md`
 
 ### 3.4 Skill: `ilearn-interview`
 
-**Triggers:** `/ilearn-interview`
+**Triggers:** `/ilearn:interview`
 
 **Precondition:** Workspace must exist with `ROADMAP.md` containing at least 1 reviewed concept.
 
@@ -241,19 +241,19 @@ File: `interviews/<date>_<topic>_<overall-score>.md`
 
 ### 3.5 Skill: `ilearn-theory` (Optional — Implemented)
 
-**Triggers:** `/ilearn-theory` or `/ilearn-theory concepts/java-oop/`
+**Triggers:** `/ilearn:theory` or `/ilearn:theory concepts/java-oop/`
 
 Agent reads `theory.md` (and related web search) and delivers an interactive lesson — explains the concept, shows examples, can answer follow-up questions. Appends new insights to `theory.md` afterwards.
 
-**Files:** `.claude/skills/ilearn-theory.md` + `.claude/plugins/ilearn/agents/teacher.md`
+**Files:** `.claude/skills/ilearn:theory.md` + `.claude/plugins/ilearn/agents/teacher.md`
 
 ### 3.6 Skill: `ilearn-status` (Optional — Implemented)
 
-**Triggers:** `/ilearn-status`
+**Triggers:** `/ilearn:status`
 
 Reads ROADMAP.md and all `review.md` files, generates a text summary: progress %, weak areas, which concepts need retry, suggested next steps.
 
-**File:** `.claude/skills/ilearn-status.md`
+**File:** `.claude/skills/ilearn:status.md`
 
 ### 3.7 Skill: `plugin-install`
 
@@ -325,7 +325,7 @@ This file lives at `.claude/plugins/ilearn/references/workspace-format.md` and c
 
 | Scenario | Handling |
 |----------|----------|
-| User has no workspace yet | `ilearn-review` and `ilearn-interview` detect missing ROADMAP.md and prompt `/ilearn-init` first |
+| User has no workspace yet | `ilearn-review` and `ilearn-interview` detect missing ROADMAP.md and prompt `/ilearn:init` first |
 | Concept folder missing ROADMAP.md entry | Review skill treats it as untracked — refuses to create orphans; user must update ROADMAP.md |
 | Multiple review attempts | `attempt` counter in review.md increments. Old feedback archived in body. Re-review only if score < 7 |
 | Empty theory.md | Reviewer agent falls back to topic name + web search for questions |

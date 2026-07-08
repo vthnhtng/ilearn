@@ -6,7 +6,7 @@ description: "Initialize a new ilearn workspace for interview preparation. Scaff
 # ilearn-init — Initialize Interview Training Workspace
 
 ## When to use
-User types `/ilearn-init` or `/ilearn-init "<topic>"` to create a new interview preparation workspace.
+User types `/ilearn:init` or `/ilearn:init "<topic>"` to create a new interview preparation workspace.
 
 ## Prerequisites
 - Run this in the directory where you want the workspace created.
@@ -94,8 +94,8 @@ After the roadmap content is finalized (from auto mode or manual), scaffold the 
 
 ---
 
-This workspace is managed by ilearn. Use `/ilearn-review` to review concepts
-and `/ilearn-interview` for mock interviews.
+This workspace is managed by ilearn. Use `/ilearn:review` to review concepts
+and `/ilearn:interview` for mock interviews.
 ```
 
 #### 4b. Create `ROADMAP.md`
@@ -227,8 +227,8 @@ Concepts:    <N>
 Roadmap:     <auto/manual>
 
 Next steps:
-  /ilearn-review         — Start reviewing concepts
-  /ilearn-interview      — Mock interview (after reviewing concepts)
+  /ilearn:review         — Start reviewing concepts
+  /ilearn:interview      — Mock interview (after reviewing concepts)
 ```
 
 ## Edge Cases

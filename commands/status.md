@@ -6,11 +6,11 @@ description: "Show progress overview — concepts reviewed, scores, weak areas, 
 # ilearn-status — Progress Overview
 
 ## When to use
-User types `/ilearn-status` to see their overall interview prep progress.
+User types `/ilearn:status` to see their overall interview prep progress.
 
 ## Prerequisites
-- A workspace initialized with `/ilearn-init` — ROADMAP.md must exist in cwd.
-- If ROADMAP.md does not exist, print: "No ilearn workspace found in this directory. Run `/ilearn-init` first to create one." and stop.
+- A workspace initialized with `/ilearn:init` — ROADMAP.md must exist in cwd.
+- If ROADMAP.md does not exist, print: "No ilearn workspace found in this directory. Run `/ilearn:init` first to create one." and stop.
 
 ## Flow
 
@@ -88,16 +88,16 @@ Based on scores, these dimensions need the most work:
 
 <date> — <score>/10 — <PASS/FAIL> — <N> concepts
 <date> — <score>/10 — <PASS/FAIL> — <N> concepts
-<or "No interviews yet — run /ilearn-interview">
+<or "No interviews yet — run /ilearn:interview">
 
 ── Suggested Next Steps ──
 
 1. Review: <concept name> (needs retry, score <N>/10)
-   /ilearn-review concepts/<slug>/
+   /ilearn:review concepts/<slug>/
 2. Study: <concept name> (new, high priority for <target> level)
-   /ilearn-theory concepts/<slug>/
+   /ilearn:theory concepts/<slug>/
 3. Mock Interview: after reviewing more concepts
-   /ilearn-interview
+   /ilearn:interview
 ```
 
 ### Step 6: Computing Weak Areas
@@ -113,10 +113,10 @@ Based on scores, these dimensions need the most work:
 
 ## Edge Cases
 
-- **No ROADMAP.md**: Warn and stop — run `/ilearn-init` first.
+- **No ROADMAP.md**: Warn and stop — run `/ilearn:init` first.
 - **No concepts at all**: Print "ROADMAP.md is empty. Add concepts to get started." and stop.
 - **No reviewed concepts**: Print report with 0 reviewed, all concepts as New.
-- **No interviews yet**: Show "No interviews yet — run /ilearn-interview" in that section.
+- **No interviews yet**: Show "No interviews yet — run /ilearn:interview" in that section.
 - **Missing review.md files**: Treat unreviewed concepts as New with score 0.
 - **review.md has no breakdown**: Default to all 0s for that concept (skip from weak areas avg).
 - **Corrupt ROADMAP.md**: If header parsing fails, show "ROADMAP.md format error — check the file." and show raw content.

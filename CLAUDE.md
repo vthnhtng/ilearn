@@ -4,7 +4,7 @@ ilearn is a Claude Code plugin for structured technical interview preparation. I
 
 ## Architecture
 
-- **Skills** (`.claude/skills/*.md`) define the command flows (`/ilearn-init`, `/ilearn-review`, etc.) — auto-loaded at session start
+- **Skills** (`.claude/skills/*.md`) define the command flows (`/ilearn:init`, `/ilearn:review`, etc.) — auto-loaded at session start
 - **Sub-agents** (`.claude/plugins/ilearn/agents/*.md`) power multi-turn interactions (interviewer, reviewer, teacher)
 - **Format contract** (`.claude/plugins/ilearn/references/workspace-format.md`) — **ALL agents must read before touching workspace files**
 - **Plugin metadata** (`.claude-plugin/plugin.json`) — name, author, version for marketplace

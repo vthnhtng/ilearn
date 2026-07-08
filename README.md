@@ -45,7 +45,7 @@ ilearn ships as a **skills-directory plugin**: skills in `.claude/skills/` auto-
 
 ### Bare aliases (when session starts in ilearn repo)
 
-`/ilearn-init`, `/ilearn-review`, `/ilearn-interview`, `/ilearn-theory`, `/ilearn-status`, `/ilearn-obsidian-export` also work when `.claude/skills/` auto-loads.
+`/ilearn:init`, `/ilearn:review`, `/ilearn:interview`, `/ilearn:theory`, `/ilearn:status`, `/ilearn:obsidian-export` also work when `.claude/skills/` auto-loads.
 
 ## Workspace Structure
 

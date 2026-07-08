@@ -6,11 +6,11 @@ description: "Deep-dive interactive lesson on a concept. Reads existing theory.m
 # ilearn-theory — Interactive Concept Lesson
 
 ## When to use
-User types `/ilearn-theory` or `/ilearn-theory concepts/<slug>/` to get an interactive lesson on a concept.
+User types `/ilearn:theory` or `/ilearn:theory concepts/<slug>/` to get an interactive lesson on a concept.
 
 ## Prerequisites
-- A workspace initialized with `/ilearn-init` — ROADMAP.md must exist in cwd.
-- If ROADMAP.md does not exist, print: "No ilearn workspace found in this directory. Run `/ilearn-init` first to create one." and stop.
+- A workspace initialized with `/ilearn:init` — ROADMAP.md must exist in cwd.
+- If ROADMAP.md does not exist, print: "No ilearn workspace found in this directory. Run `/ilearn:init` first to create one." and stop.
 
 ## Flow
 
@@ -91,8 +91,8 @@ Concept:     <Concept Name>
 New insights appended to theory.md
 
 Next steps:
-  /ilearn-review concepts/<slug>/   — Test your understanding
-  /ilearn-theory concepts/<slug>/   — Dive deeper on a specific aspect
+  /ilearn:review concepts/<slug>/   — Test your understanding
+  /ilearn:theory concepts/<slug>/   — Dive deeper on a specific aspect
 ```
 
 ### Step 8: Commit
@@ -104,7 +104,7 @@ git commit -m "feat: theory lesson — <Concept Name>"
 
 ## Edge Cases
 
-- **No ROADMAP.md**: Warn and stop — run `/ilearn-init` first.
+- **No ROADMAP.md**: Warn and stop — run `/ilearn:init` first.
 - **Concept not in ROADMAP.md**: Refuse — "Concept `<slug>` is not in your ROADMAP.md."
 - **Empty theory.md**: Teacher teaches from scratch using topic name + web search.
 - **Teacher doesn't return notes block**: Show raw output, ask user what insights to keep.

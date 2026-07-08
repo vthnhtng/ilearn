@@ -6,11 +6,11 @@ description: "Review a concept by answering questions and getting scored. If no 
 # ilearn-review — Review & Score a Concept
 
 ## When to use
-User types `/ilearn-review` or `/ilearn-review concepts/<slug>/` to review a concept.
+User types `/ilearn:review` or `/ilearn:review concepts/<slug>/` to review a concept.
 
 ## Prerequisites
-- A workspace initialized with `/ilearn-init` — ROADMAP.md must exist in cwd.
-- If ROADMAP.md does not exist, print: "No ilearn workspace found in this directory. Run `/ilearn-init` first to create one." and stop.
+- A workspace initialized with `/ilearn:init` — ROADMAP.md must exist in cwd.
+- If ROADMAP.md does not exist, print: "No ilearn workspace found in this directory. Run `/ilearn:init` first to create one." and stop.
 
 ## Flow
 
@@ -138,8 +138,8 @@ Breakdown:
   Depth:          <D>/10
   Communication:  <C>/10
 
-<If status is in_progress: The score is below 7. Review the feedback and try again with /ilearn-review concepts/<slug>/>
-<If status is reviewed: Great job! Move to the next concept or try /ilearn-interview for a mock interview.>
+<If status is in_progress: The score is below 7. Review the feedback and try again with /ilearn:review concepts/<slug>/>
+<If status is reviewed: Great job! Move to the next concept or try /ilearn:interview for a mock interview.>
 ```
 
 2. Git add and commit:
@@ -152,7 +152,7 @@ git commit -m "feat: review <Concept Name> — score <overall>/10 (attempt <N>)"
 
 ## Edge Cases
 
-- **No ROADMAP.md**: Warn and stop — run `/ilearn-init` first.
+- **No ROADMAP.md**: Warn and stop — run `/ilearn:init` first.
 - **Concept not in ROADMAP.md**: Refuse — "Concept `<slug>` is not in your ROADMAP.md. Add it first."
 - **Multiple review attempts**: Increment `attempt` counter. Archive old feedback by keeping previous content below a `## Previous Feedback` section in review.md.
 - **Empty theory.md and empty questions.md**: Fall back to topic name + web search for question generation.
