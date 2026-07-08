@@ -208,7 +208,7 @@ interviews/.gitkeep
 }
 ```
 
-Set `"roadmap_source"` to `"auto"` or `"manual"` based on user's choice.
+Set `"roadmap_source"` to `"auto"`, `"manual"`, or `"from-questions"` based on user's choice.
 
 ### Step 5: Git Init & Commit
 
@@ -226,7 +226,7 @@ Report to the user:
 Topic:       <topic>
 Level:       <current_level> → <target_level>
 Concepts:    <N>
-Roadmap:     <auto/manual>
+Roadmap:     <auto/manual/from-questions>
 
 Next steps:
   /ilearn:review         — Start reviewing concepts
