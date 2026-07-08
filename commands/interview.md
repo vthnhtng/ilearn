@@ -69,12 +69,63 @@ Conduct the interview now. Ask the first question.
 2. The interviewer will run the full interactive session: questions → answers → follow-ups → scoring.
 3. At the end, the interviewer returns the complete interview log content.
 
-### Step 6: Write interview log
+### Step 6: Write interview report
 
 1. Parse the returned log content.
 2. Extract the overall score and result (PASS/FAIL).
-3. Create filename: `interviews/<YYYY-MM-DD>_<topic-slug>_<score>.md` (topic slug from config topic, lowercase with hyphens).
-4. Write the full log content to the file.
+3. Create the report folder: `interviews/<dd-mm-yyyy>/` (e.g., `interviews/07-07-2026/`). If it already exists, append a counter (`-v2`, `-v3`).
+4. Write three files into the folder:
+
+   **`overview.md`** — header metadata + summary section:
+   ```
+   # Interview Log
+
+   **Date:** <YYYY-MM-DD>
+   **Topic:** <topic>
+   **Current Level:** <current_level>
+   **Target Level:** <target_level>
+   **Duration:** <minutes> min
+   **Concepts Covered:** [[concepts/<slug>/]], ...
+   **Result:** PASS | Overall Score: <N>/10
+
+   ---
+
+   ## Summary
+
+   **Strengths:**
+   - <strength 1>
+   - <strength 2>
+
+   **Weaknesses:**
+   - <weakness 1>
+   - <weakness 2>
+
+   **Final Verdict:** PASS | Overall Score: <N>/10
+   <actionable advice>
+   ```
+
+   **`questions.md`** — numbered questions only (no answers):
+   ```
+   1. <question 1 text>
+   2. <question 2 text>
+   ...
+   ```
+
+   **`answers.md`** — full Q&A with scores and evaluation:
+   ```
+   ### Q1
+   **Question:** <question text>
+   **Difficulty:** <easy/medium/hard>
+   **Concepts:** [[concepts/<slug>/]]
+   **Answer:** <candidate's answer>
+   **Score:** <N>/10
+   **Evaluation:** <what was good, what was missing>
+   **Follow-up:** <any follow-up asked, or N/A>
+
+   ### Q2
+   ...
+   ```
+
 5. Print summary:
 
 ```
@@ -109,8 +160,8 @@ After the interview, for each concept covered:
 ### Step 8: Commit
 
 ```bash
-git add interviews/<log-file>.md
-git commit -m "feat: interview log — <topic> (<overall>/10, <result>)"
+git add interviews/<dd-mm-yyyy>/
+git commit -m "feat: interview — <topic> (<overall>/10, <result>)"
 ```
 
 ## Edge Cases
@@ -122,4 +173,4 @@ git commit -m "feat: interview log — <topic> (<overall>/10, <result>)"
 - **Missing or empty theory.md**: If theory.md is missing or empty, pass empty theory — interviewer falls back to topic name.
 - **Interviewer doesn't finish**: If the sub-agent returns incomplete content or no log, show raw output and ask user to help.
 - **CV file not found**: If user says yes to CV but no file found, ask them to paste or skip.
-- **Duplicate log filenames**: If a log with the same date+topic+score exists, append a counter (`_v2`).
+- **Duplicate folder names**: If `interviews/<dd-mm-yyyy>/` already exists, append `-v2`, `-v3` etc.

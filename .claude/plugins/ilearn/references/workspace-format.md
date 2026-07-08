@@ -93,19 +93,65 @@ reviewed_at: ""          # YYYY-MM-DD, empty if unreviewed
 
 `status: new` = never reviewed. `in_progress` = attempted but score < 7. `reviewed` = passed.
 
-## Interview Log Format
+## Interview Report Format
 
-File: `interviews/<date>_<topic-slug>_<score>.md`
+Each interview session writes a folder with three files:
+
+```
+interviews/
+└── <dd-mm-yyyy>/
+    ├── overview.md       # Header metadata + strengths/weaknesses/verdict
+    ├── questions.md       # Numbered questions only
+    └── answers.md         # Full Q&A with scores and evaluations
+```
+
+If multiple sessions fall on the same date, append `-v2`, `-v3` etc. to the folder name.
+
+### overview.md
 
 ```markdown
 # Interview Log
 
 **Date:** <YYYY-MM-DD>
 **Topic:** <topic>
+**Current Level:** <current_level>
+**Target Level:** <target_level>
 **Duration:** <minutes> min
 **Concepts Covered:** [[concepts/<NN-category-slug>/<NN-concept-slug>/]], ...
 **Result:** PASS | Overall Score: <N/10>
-...
+
+---
+
+## Summary
+
+**Strengths:**
+- ...
+
+**Weaknesses:**
+- ...
+
+**Final Verdict:** PASS | Overall Score: <N>/10
+<actionable advice>
+```
+
+### questions.md
+
+```markdown
+1. What is ...?
+2. Explain ...
+```
+
+### answers.md
+
+```markdown
+### Q1
+**Question:** <question text>
+**Difficulty:** <easy/medium/hard>
+**Concepts:** [[concepts/<NN-category-slug>/<NN-concept-slug>/]]
+**Answer:** <candidate's answer>
+**Score:** <N>/10
+**Evaluation:** <what was good, what was missing>
+**Follow-up:** <N/A or follow-up asked>
 ```
 
 ## .ilearn/config.json
