@@ -1,12 +1,12 @@
 ---
 name: review
-description: "Review a concept by answering questions and getting scored. If no concept specified, lists available concepts for review. Supports iterative review with progress tracking."
+description: "Score answers for a concept. Reads answers.md, theory.md, questions.md and runs the reviewer agent. If answers.md is empty, tells user to write answers first."
 ---
 
-# ilearn-review — Review & Score a Concept
+# ilearn-review — Score Your Answers
 
 ## When to use
-User types `/ilearn:review` or `/ilearn:review concepts/<slug>/` to review a concept.
+User types `/ilearn:review` or `/ilearn:review concepts/<slug>/` to get their answers scored. Write your answers in `answers.md` first, then run this command.
 
 ## Prerequisites
 - A workspace initialized with `/ilearn:init` — ROADMAP.md must exist in cwd.
@@ -36,58 +36,20 @@ If no argument was provided:
 3. Present as a numbered list.
 4. Ask user to pick one by number, or type the slug directly.
 
-### Step 3: Prepare questions
+### Step 3: Check answers.md
 
-1. Read `theory.md` and `questions.md` from the concept folder.
-2. If `questions.md` has content (not empty, not just HTML comments) → use those questions as-is.
-3. If `questions.md` is empty:
-   - Ask: "questions.md is empty. Generate and save questions now? [y/N]"
-   - If yes:
-     a. Read `.claude/plugins/ilearn/references/workspace-format.md` to recall format rules.
-     b. Read `.ilearn/config.json` to get `current_level` and `target_level`.
-     c. Spawn a general-purpose agent (`subagent_type: "general-purpose"`, `run_in_background: false`). Pass as prompt:
+1. Read `concepts/<slug>/answers.md`.
+2. If answers.md is empty or only has placeholder content (just HTML comments):
+   - Print: "answers.md is empty. Write your answers to `concepts/<slug>/answers.md` first (use `### Q1`, `### Q2` etc. matching questions.md), then run `/ilearn:review` again."
+   - Stop.
 
-        ```
-        You are a question writer for technical interview preparation.
+### Step 4: Check prerequisites
 
-        TOPIC: <Concept Name>
-        THEORY:
-        <content of theory.md>
-
-        Read .claude/plugins/ilearn/references/workspace-format.md first to understand the workspace structure and questions.md format.
-
-        Generate 5-10 interview-style review questions based solely on the theory content provided. Cover key concepts, edge cases, trade-offs, and practical applications appropriate for a <current_level> → <target_level> interview.
-
-        Return as a numbered markdown list:
-        1. What is ...?
-        2. Explain ...
-        3. How would you ...?
-        ```
-
-     d. Write the generated list to `concepts/<slug>/questions.md`.
-     e. Commit: `git add concepts/<slug>/questions.md && git commit -m "feat: questions — <Concept Name>"`
-   - If no:
-     - If `theory.md` has content → generate 3-5 questions based on the theory content (inline, no persist).
-     - If `theory.md` is also empty → use web search for the concept topic and generate 3-5 questions based on search results (inline, no persist).
-4. Present the question source to the user: "Using questions from: [questions.md / generated from theory / generated from web]"
-5. Ask: "Would you like questions one at a time, or all at once?"
-6. Present questions per user preference.
-
-### Step 4: Collect answers
-
-1. Show each question to the user.
-2. Wait for their answer in chat before showing the next question.
-3. After all questions answered, compile answers into `answers.md` format:
-
-```markdown
-### Q1
-<user's answer>
-
-### Q2
-<user's answer>
-```
-
-4. Write `answers.md` to `concepts/<slug>/answers.md`.
+1. Read `theory.md` from the concept folder.
+   - If theory.md is empty or placeholder → print: "theory.md is empty. Run `/ilearn:create-theory concepts/<slug>/` first to populate theory notes." and stop.
+2. Read `questions.md` from the concept folder.
+   - If questions.md is empty or just HTML comments → print: "questions.md is empty. Run `/ilearn:create-question concepts/<slug>/` first to generate review questions." and stop.
+3. Present the sources to the user: "Reviewing answers for <Concept Name> using <N> questions from questions.md."
 
 ### Step 5: Score via reviewer sub-agent
 
@@ -181,7 +143,8 @@ git commit -m "feat: review <Concept Name> — score <overall>/10 (attempt <N>)"
 - **No ROADMAP.md**: Warn and stop — run `/ilearn:init` first.
 - **Concept not in ROADMAP.md**: Refuse — "Concept `<slug>` is not in your ROADMAP.md. Add it first."
 - **Multiple review attempts**: Increment `attempt` counter. Archive old feedback by keeping previous content below a `## Previous Feedback` section in review.md.
-- **Empty theory.md and empty questions.md**: Fall back to topic name + web search for question generation.
-- **Empty answers.md**: Reviewer returns score 0 with "No answers provided."
+- **Empty answers.md**: Print message asking user to write answers to answers.md first — stop.
+- **Empty theory.md**: Prompt user to run `/ilearn:create-theory` first — stop.
+- **Empty questions.md**: Prompt user to run `/ilearn:create-question` first — stop.
 - **review.md parsing fails**: Show raw reviewer output to user. Ask them to help extract scores.
 - **ROADMAP.md has no `[ ]` or `[x]` concepts**: Print "No concepts found in ROADMAP.md." and stop.
