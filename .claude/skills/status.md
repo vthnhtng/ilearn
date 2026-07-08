@@ -29,7 +29,7 @@ Parse the header block. Extract:
 
 ### Step 3: Read all concept entries
 
-1. Parse all lines matching `- [x]` or `- [ ]` patterns with `[[concepts/<slug>/]]`.
+1. Parse all lines matching `- [x]` or `- [ ]` patterns. From each line, extract the slug as the path between `[[concepts/` and the final `/]]`. The slug may contain slashes (e.g., `01-core-java/01-java-oop` from `[[concepts/01-core-java/01-java-oop/]]`).
 2. For each `[ ]` (unreviewed) concept, read `concepts/<slug>/review.md` if it exists — some may have `status: in_progress` from a low first attempt.
 3. For each `[x]` concept, extract its score from the ROADMAP.md line.
 4. Categorize each concept:

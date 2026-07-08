@@ -9,12 +9,13 @@ Every ilearn sub-agent MUST read this before reading or writing workspace files.
 <workspace-root>/
 ├── README.md                  # Workspace overview (free-form, user-editable)
 ├── ROADMAP.md                 # Master checklist — see format below
-├── concepts/                  # One subfolder per concept
-│   └── <concept-slug>/        # kebab-case slug matching the concept name
-│       ├── theory.md          # Learning notes (user or AI populated)
-│       ├── questions.md       # Review questions (one per line numbered)
-│       ├── answers.md         # User's answers ### Q1, ### Q2 aligned to questions
-│       └── review.md          # YAML frontmatter + markdown feedback (see below)
+├── concepts/                            # One subfolder per category
+│   └── <NN-category-slug>/              # kebab-case slug, NN = sequential number
+│       └── <NN-concept-slug>/           # kebab-case slug, NN = sequential number per category
+│           ├── theory.md                # Learning notes (user or AI populated)
+│           ├── questions.md             # Review questions (one per line numbered)
+│           ├── answers.md               # User's answers ### Q1, ### Q2 aligned to questions
+│           └── review.md                # YAML frontmatter + markdown feedback (see below)
 ├── interviews/                # Mock interview logs
 └── .ilearn/
     └── config.json            # Plugin metadata
@@ -38,14 +39,14 @@ Every ilearn sub-agent MUST read this before reading or writing workspace files.
 ```markdown
 ## <Category Name>
 
-- [ ] <Concept Name> | [[concepts/<concept-slug>/]]
-- [x] <Concept Name> | Score: <N/10> | [[concepts/<concept-slug>/]] | Reviewed: <YYYY-MM-DD>
+- [ ] <Concept Name> | [[concepts/<NN-category-slug>/<NN-concept-slug>/]]
+- [x] <Concept Name> | Score: <N/10> | [[concepts/<NN-category-slug>/<NN-concept-slug>/]] | Reviewed: <YYYY-MM-DD>
 ```
 
 Rules:
 - `[x]` = concept reviewed and scored. `[ ]` = not yet reviewed.
 - `| Score: N/10 |` only on `[x]` lines.
-- `[[concepts/<slug>/]]` is an Obsidian-compatible wikilink.
+- `[[concepts/<NN-category-slug>/<NN-concept-slug>/]]` is an Obsidian-compatible wikilink.
 - Categories are `##` headings. Order implies priority.
 
 ## Concept Subfolder Files
@@ -102,7 +103,7 @@ File: `interviews/<date>_<topic-slug>_<score>.md`
 **Date:** <YYYY-MM-DD>
 **Topic:** <topic>
 **Duration:** <minutes> min
-**Concepts Covered:** [[concepts/<slug>/]], ...
+**Concepts Covered:** [[concepts/<NN-category-slug>/<NN-concept-slug>/]], ...
 **Result:** PASS | Overall Score: <N/10>
 ...
 ```

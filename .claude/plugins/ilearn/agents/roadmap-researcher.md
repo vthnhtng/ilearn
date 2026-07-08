@@ -33,6 +33,7 @@ Return ONLY a valid YAML block wrapped in ```yaml:
 ```yaml
 categories:
   - name: "Core Java Foundation"
+    slug: "core-java"
     concepts:
       - name: "Java OOP (Encapsulation, Inheritance, Polymorphism)"
         slug: "java-oop"
@@ -43,6 +44,7 @@ categories:
         difficulty: "beginner"
         estimated_hours: 3
   - name: "Spring Framework"
+    slug: "spring-framework"
     concepts:
       - name: "Spring IOC / Dependency Injection"
         slug: "spring-ioc"
@@ -51,7 +53,8 @@ categories:
 ```
 
 ### Rules
-- `slug`: kebab-case, lowercase, no special chars. Must match `^[a-z][a-z0-9-]+$`
+- Category `slug`: kebab-case, lowercase, no special chars. Must match `^[a-z][a-z0-9-]+$`
+- Concept `slug`: kebab-case, lowercase, no special chars. Must match `^[a-z][a-z0-9-]+$`
 - `difficulty`: one of `beginner`, `intermediate`, `advanced`
 - `estimated_hours`: integer, total study time for this concept
 - Include 15-40 concepts depending on timeline breadth

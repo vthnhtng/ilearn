@@ -100,7 +100,12 @@ and `/ilearn-interview` for mock interviews.
 
 #### 4b. Create `ROADMAP.md`
 
-If auto mode, write the approved concepts with this format. The header block must match exactly:
+If auto mode, write the approved concepts with this format. The header block must match exactly.
+
+For the ROADMAP.md wikilinks, use numbered two-level nesting: `[[concepts/<NN-category-slug>/<NN-concept-slug>/]]`
+
+- `NN-category-slug` is the category's slug prefixed with a two-digit zero-padded sequential number (01, 02...) in the order categories appear in the YAML.
+- `NN-concept-slug` is the concept's slug prefixed with a two-digit zero-padded sequential number (01, 02...) per-category in the order concepts appear under that category.
 
 ```markdown
 # Roadmap: <topic>
@@ -114,16 +119,16 @@ If auto mode, write the approved concepts with this format. The header block mus
 
 ## <Category Name>
 
-- [ ] <Concept Name> | [[concepts/<slug>/]]
+- [ ] <Concept Name> | [[concepts/<NN-category-slug>/<NN-concept-slug>/]]
 
 ## <Next Category>
 
-- [ ] <Concept Name> | [[concepts/<slug>/]]
+- [ ] <Concept Name> | [[concepts/<NN-category-slug>/<NN-concept-slug>/]]
 ```
 
-The section after `---` is one `## <Category Name>` per category. Each concept under it is `- [ ] <Concept Name> | [[concepts/<slug>/]]`.
+The section after `---` is one `## <Category Name>` per category. Each concept under it is `- [ ] <Concept Name> | [[concepts/<NN-category-slug>/<NN-concept-slug>/]]`.
 
-If manual mode and the user provided content, write their content. If manual and no content yet, write the headers-only template:
+If manual mode and the user provided content, write their content. If the pasted content uses the old flat `[[concepts/<slug>/]]` format, ask the user if they want to convert to the new nested format. If yes, derive category slugs from `## <Category Name>` headings, assign NN-prefixes, and rewrite entries. If manual and no content yet, write the headers-only template:
 
 ```markdown
 # Roadmap: <topic>
@@ -139,31 +144,36 @@ If manual mode and the user provided content, write their content. If manual and
 
 ## Category 1
 
-- [ ] Concept 1 | [[concepts/concept-1/]]
+- [ ] Concept 1 | [[concepts/01-category-1/01-concept-1/]]
 ```
 
 #### 4c. Create concept subfolders
 
-For each concept parsed from the roadmap, create `concepts/<slug>/` with exactly four files:
+For each concept parsed from the roadmap, create the two-level folder structure:
 
-**`concepts/<slug>/theory.md`:**
+1. First, create `concepts/<NN-category-slug>/` for each category (if it doesn't exist yet).
+2. Then, for each concept, create `concepts/<NN-category-slug>/<NN-concept-slug>/`.
+
+Use the same NN prefixes assigned in ROADMAP.md (Step 4b). If a category has zero concepts, create the category directory but skip concept subdirectories. Each concept subfolder gets exactly four files:
+
+**`concepts/<NN-category-slug>/<NN-concept-slug>/theory.md`:**
 ```markdown
 # <Concept Name>
 
 Study notes go here.
 ```
 
-**`concepts/<slug>/questions.md`:**
+**`concepts/<NN-category-slug>/<NN-concept-slug>/questions.md`:**
 ```markdown
 <!-- Questions will be added here during review sessions -->
 ```
 
-**`concepts/<slug>/answers.md`:**
+**`concepts/<NN-category-slug>/<NN-concept-slug>/answers.md`:**
 ```markdown
 <!-- Your answers go here -->
 ```
 
-**`concepts/<slug>/review.md`:**
+**`concepts/<NN-category-slug>/<NN-concept-slug>/review.md`:**
 ```markdown
 ---
 status: new
