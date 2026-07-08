@@ -3,7 +3,7 @@ name: from-questions
 description: "Scaffold an ilearn workspace from an interview questions file. Reads .txt/.md, classifies questions into categories/concepts, scaffolds folders with pre-populated questions."
 ---
 
-# ilearn:from-questions — Generate Workspace from Questions File
+# ilearn-from-questions — Generate Workspace from Questions File
 
 ## When to use
 User types `/ilearn:from-questions` or `/ilearn:from-questions <path>` to create a workspace from a questions file.

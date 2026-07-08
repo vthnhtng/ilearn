@@ -121,4 +121,4 @@ File: `interviews/<date>_<topic-slug>_<score>.md`
 }
 ```
 
-`roadmap_source`: `"auto"` or `"manual"`.
+`roadmap_source`: `"auto"`, `"manual"`, or `"from-questions"`.
